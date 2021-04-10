@@ -1,3 +1,4 @@
+// const _import = require('../../router/_import_' + import.meta.env.MODE)
 import { getModules } from '@/api/system'
 import { constantRoutes } from '@/router'
 import Layout from '@/layout/index.vue'
@@ -9,7 +10,7 @@ export function mountRouter(asyncRouterMap) {
       if (route.component === 'Layout') {
         route.component = Layout
       } else {
-        // route.component = import('@/views/' + route.component + '.vue')
+        route.component = import('../../views/' + route.component + '.vue')
       }
     }
     if (route.children && route.children.length) {
