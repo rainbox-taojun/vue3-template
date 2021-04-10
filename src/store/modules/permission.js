@@ -1,7 +1,6 @@
-const _import = require('../../router/_import_' + process.env.NODE_ENV)
 import { getModules } from '@/api/system'
 import { constantRoutes } from '@/router'
-import Layout from '@/layout'
+import Layout from '@/layout/index.vue'
 
 // 挂在路由上的组件
 export function mountRouter(asyncRouterMap) {
@@ -10,7 +9,7 @@ export function mountRouter(asyncRouterMap) {
       if (route.component === 'Layout') {
         route.component = Layout
       } else {
-        route.component = _import(route.component)
+        // route.component = import('@/views/' + route.component + '.vue')
       }
     }
     if (route.children && route.children.length) {
@@ -18,6 +17,7 @@ export function mountRouter(asyncRouterMap) {
     }
     return true
   })
+
   return accessedRouters
 }
 

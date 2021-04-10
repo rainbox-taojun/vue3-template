@@ -30,6 +30,13 @@ const router = createRouter({
   routes: constantRoutes
 })
 
+// 批量新增路由
+export function addRoutes(routes) {
+  routes.forEach(item => {
+    router.addRoute(item)
+  })
+}
+
 export function resetRouter() {
   const newRouter = createRouter()
   router.matcher = newRouter.matcher // reset router

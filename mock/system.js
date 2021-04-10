@@ -1,48 +1,4 @@
 const asyncRoutes = [
-  {
-    path: 'kpi',
-    component: 'Layout',
-    meta: { title: '指标管理', icon: 'chart' },
-    children: [
-      {
-        path: '',
-        component: 'kpi/index',
-        name: 'Kpi',
-        meta: { title: '指标管理', icon: 'chart', affix: false }
-      }
-    ]
-  },
-  {
-    path: '/system',
-    component: 'Layout',
-    meta: { title: '系统管理', icon: 'user', affix: false },
-    children: [
-      {
-        path: 'user',
-        component: 'system/user/index',
-        name: 'User',
-        meta: { title: '用户管理', icon: '', affix: false }
-      },
-      {
-        path: 'role',
-        component: 'system/role/index',
-        name: 'Role',
-        meta: { title: '角色管理', icon: '', affix: false }
-      },
-      {
-        path: 'menu',
-        component: 'system/menu/index',
-        name: 'Menu',
-        meta: { title: '导航管理', icon: '', affix: false }
-      },
-      {
-        path: 'post',
-        component: 'system/post/index',
-        name: 'Post',
-        meta: { title: '岗位管理', icon: '', affix: false }
-      }
-    ]
-  }
 ]
 
 export default [
