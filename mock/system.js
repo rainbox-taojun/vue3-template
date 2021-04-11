@@ -1,22 +1,17 @@
 const asyncRoutes = [
   {
     path: '/system',
-    component: 'system/index',
+    component: 'Layout',
     meta: { title: '系统管理', icon: 'user', affix: false },
+    children: [
+      {
+        path: 'menu',
+        component: 'system/menu/index',
+        name: 'Menu',
+        meta: { title: '导航管理', icon: '', affix: false }
+      }
+    ]
   }
-  // {
-  //   path: '/system',
-  //   component: 'Layout',
-  //   meta: { title: '系统管理', icon: 'user', affix: false },
-  //   children: [
-  //     {
-  //       path: 'menu',
-  //       component: 'system/menu/index',
-  //       name: 'Menu',
-  //       meta: { title: '导航管理', icon: '', affix: false }
-  //     }
-  //   ]
-  // }
 ]
 
 export default [

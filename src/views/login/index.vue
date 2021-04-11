@@ -63,7 +63,7 @@
       </div>
     </el-form>
 
-    <el-dialog title="Or connect with" :visible.sync="showDialog">
+    <el-dialog title="Or connect with" v-model="showDialog">
       Can not be simulated on local, so please combine you own business simulation! ! !
       <br>
       <br>
@@ -134,7 +134,7 @@ export default {
       this.$refs.password.focus()
     }
   },
-  destroyed() {
+  unMounted() {
     // window.removeEventListener('storage', this.afterQRScan)
   },
   methods: {
