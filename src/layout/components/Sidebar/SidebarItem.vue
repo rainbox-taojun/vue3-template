@@ -23,7 +23,7 @@
       :index="resolvePath(item.path)"
       popper-append-to-body
     >
-      <template slot="title">
+      <template #title>
         <item
           v-if="item.meta"
           :icon="item.meta && item.meta.icon"
@@ -105,7 +105,6 @@ export default {
       if (isExternal(props.basePath)) {
         return props.basePath
       }
-      console.log(props.basePath + routePath)
       if (props.basePath === '/') {
         return routePath
       }

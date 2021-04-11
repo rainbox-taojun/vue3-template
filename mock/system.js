@@ -5,6 +5,12 @@ const asyncRoutes = [
     meta: { title: '系统管理', icon: 'user', affix: false },
     children: [
       {
+        path: 'user',
+        component: 'system/user/index',
+        name: 'User',
+        meta: { title: '用户管理', icon: '', affix: false }
+      },
+      {
         path: 'menu',
         component: 'system/menu/index',
         name: 'Menu',
