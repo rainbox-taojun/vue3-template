@@ -45,7 +45,7 @@ export default {
       if (!name) {
         return false
       }
-      return name.trim().toLocaleLowerCase() === 'Dashboard'.toLocaleLowerCase()
+      return name.trim().toLocaleLowerCase() === 'Home'.toLocaleLowerCase()
     }
 
     const handleLink = (item) => {
