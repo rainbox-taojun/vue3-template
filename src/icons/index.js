@@ -1,7 +1,4 @@
-import SvgIcon from '@/components/SvgIcon'// svg component
-
-
-// const requireAll = import.meta.globEager('./svg')
+import SvgIcon from '@/components/SvgIcon/index.vue'// svg component
 
 export default {
   install: (app, options) => {
