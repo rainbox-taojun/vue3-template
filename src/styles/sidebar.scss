@@ -94,6 +94,13 @@
       color: $subMenuActiveText !important;
     }
 
+    .is-active>.svg-icon,
+    .is-active>i,
+    .is-active>.el-submenu__title .svg-icon,
+    .is-active>.el-submenu__title i {
+      color: #72A1FF;
+    }
+
     & .nest-menu .el-submenu>.el-submenu__title,
     & .el-submenu .el-menu-item {
       padding-left: 40px!important;
