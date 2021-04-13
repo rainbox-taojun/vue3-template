@@ -1,4 +1,3 @@
-// const _import = require('../../router/_import_' + import.meta.env.MODE)
 import { getModules } from '@/api/system'
 import { constantRoutes } from '@/router'
 import Layout from '@/layout/index.vue'

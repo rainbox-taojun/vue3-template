@@ -1,25 +1,22 @@
+<template>
+  <svg-icon v-if="!icon.includes('el-icon')" :icon-class="icon"></svg-icon>
+  <i v-else :class="icon + 'sub-el-icon'"></i>
+  <span>{{title}}</span>
+</template>
+
 <script>
-import { h } from 'vue'
-
-const Item = (props, context) => {
-  const { icon, title } = props
-
-  return [
-    h(
-      (icon && icon.includes('el-icon')) ? 'i' : 'svg-icon',
-      {class: 'sub-el-icon'},
-    ),
-    h(
-      title ? 'span' : '',
-      {slot: 'title'},
-      title
-    )
-  ]
+export default {
+  props: {
+    icon: {
+      type: String,
+      default: ''
+    },
+    title: {
+      type: String,
+      default: ''
+    }
+  }
 }
-
-Item.props = ['icon', 'title']
-
-export default Item
 </script>
 
 <style scoped>

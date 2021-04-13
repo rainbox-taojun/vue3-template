@@ -18,10 +18,10 @@
         
         <template #dropdown>
           <el-dropdown-menu slot="dropdown">
-            <router-link to="/profile/index">
+            <!-- <router-link to="/profile/index">
               <el-dropdown-item>个人信息</el-dropdown-item>
-            </router-link>
-            <el-dropdown-item divided @click.native="logout">
+            </router-link> -->
+            <el-dropdown-item divided @click="logout">
               <span style="display:block;">登 出</span>
             </el-dropdown-item>
           </el-dropdown-menu>
@@ -63,13 +63,22 @@ export default {
     const name = computed(() => {
       return store.getters.name
     })
-    console.log(store)
+    
+    const device = computed(() => {
+      return store.getters.device
+    })
+
+    const logout = () => {
+
+    }
 
     return {
       sidebar,
       toggleSideBar,
       avatar,
-      name
+      name,
+      device,
+      logout
     }
   }
 }
