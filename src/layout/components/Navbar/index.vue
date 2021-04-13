@@ -4,44 +4,30 @@
 
     <breadcrumb id="breadcrumb-container" class="breadcrumb-container" />
 
-    <!-- <div class="right-menu">
+    <div class="right-menu">
       <template v-if="device!=='mobile'">
         <search id="header-search" class="right-menu-item" />
-
-        <error-log class="errLog-container right-menu-item hover-effect" />
-
-        <screenfull id="screenfull" class="right-menu-item hover-effect" />
-
-        <el-tooltip content="Global Size" effect="dark" placement="bottom">
-          <size-select id="size-select" class="right-menu-item hover-effect" />
-        </el-tooltip>
-
       </template>
 
       <el-dropdown class="avatar-container right-menu-item hover-effect" trigger="click">
         <div class="avatar-wrapper">
-          <img :src="avatar+'?imageView2/1/w/80/h/80'" class="user-avatar">
-          <i class="el-icon-caret-bottom" />
+          <span>你好，{{name}}</span>
+          <el-avatar v-if="avatar" shape="square" size="medium" :src="avatar" class="user-avatar" />
+          <el-avatar v-else shape="square" size="medium"  class="user-avatar" icon="el-icon-user-solid" />
         </div>
-        <el-dropdown-menu slot="dropdown">
-          <router-link to="/profile/index">
-            <el-dropdown-item>Profile</el-dropdown-item>
-          </router-link>
-          <router-link to="/">
-            <el-dropdown-item>Dashboard</el-dropdown-item>
-          </router-link>
-          <a target="_blank" href="https://github.com/PanJiaChen/vue-element-admin/">
-            <el-dropdown-item>Github</el-dropdown-item>
-          </a>
-          <a target="_blank" href="https://panjiachen.github.io/vue-element-admin-site/#/">
-            <el-dropdown-item>Docs</el-dropdown-item>
-          </a>
-          <el-dropdown-item divided @click.native="logout">
-            <span style="display:block;">Log Out</span>
-          </el-dropdown-item>
-        </el-dropdown-menu>
+        
+        <template #dropdown>
+          <el-dropdown-menu slot="dropdown">
+            <router-link to="/profile/index">
+              <el-dropdown-item>个人信息</el-dropdown-item>
+            </router-link>
+            <el-dropdown-item divided @click.native="logout">
+              <span style="display:block;">登 出</span>
+            </el-dropdown-item>
+          </el-dropdown-menu>
+        </template>
       </el-dropdown>
-    </div> -->
+    </div>
   </div>
 </template>
 
@@ -50,12 +36,14 @@ import { computed } from 'vue'
 import { useStore } from 'vuex'
 import Breadcrumb from './Breadcrumb.vue'
 import Hamburger from './Hamburger.vue'
+import Search from './Search.vue'
 
 export default {
   name: 'Navbar',
   components: {
     Breadcrumb,
-    Hamburger
+    Hamburger,
+    Search
   },
   setup() {
     const store = useStore()
@@ -68,9 +56,20 @@ export default {
       store.dispatch('app/toggleSideBar')
     }
 
+    const avatar = computed(() => {
+      return store.getters.avatar
+    })
+
+    const name = computed(() => {
+      return store.getters.name
+    })
+    console.log(store)
+
     return {
       sidebar,
-      toggleSideBar
+      toggleSideBar,
+      avatar,
+      name
     }
   }
 }
@@ -100,6 +99,63 @@ export default {
 
   .breadcrumb-container {
     float: left;
+  }
+
+  .right-menu {
+    margin-right: 10px;
+    float: right;
+    display: flex;
+    height: 100%;
+    line-height: 50px;
+
+    &:focus {
+      outline: none;
+    }
+
+    .right-menu-item {
+      display: inline-block;
+      padding: 0 8px;
+      height: 100%;
+      font-size: 18px;
+      color: #5a5e66;
+      vertical-align: text-bottom;
+
+      &.hover-effect {
+        cursor: pointer;
+        transition: background .3s;
+
+        &:hover {
+          background: rgba(0, 0, 0, .025)
+        }
+      }
+    }
+
+    .avatar-container {
+      margin-right: 30px;
+
+      .avatar-wrapper {
+        margin-top: 10px;
+        position: relative;
+        display: flex;
+        align-items: center;
+
+        .user-avatar {
+          margin-left: 10px;
+          cursor: pointer;
+          width: 40px;
+          height: 40px;
+          border-radius: 10px;
+        }
+
+        .el-icon-caret-bottom {
+          cursor: pointer;
+          position: absolute;
+          right: -20px;
+          top: 25px;
+          font-size: 12px;
+        }
+      }
+    }
   }
 }
 </style>
