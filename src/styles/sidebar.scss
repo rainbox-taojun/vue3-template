@@ -79,6 +79,17 @@
       }
     }
 
+    .el-menu-item {
+      padding-left: 15px !important;
+      border-left: 5px solid #fff;
+    }
+
+    .el-menu-item.is-active {
+      font-weight: 600;
+      background-color: $subMenuHover !important;
+      border-left: 5px solid #85D8FC;
+    }
+
     .is-active>.el-submenu__title {
       color: $subMenuActiveText !important;
     }

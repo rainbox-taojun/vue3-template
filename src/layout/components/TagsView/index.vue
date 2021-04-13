@@ -272,7 +272,7 @@ export default {
 .tags-view-wrapper {
   .tags-view-item {
     .el-icon-close {
-      margin-right: -8px;
+      margin-right: -10px;
       width: 20px;
       height: 20px;
       vertical-align: 2px;
