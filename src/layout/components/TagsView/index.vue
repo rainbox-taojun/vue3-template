@@ -2,7 +2,6 @@
   <div id="tags-view-container" class="tags-view-container">
     <scroll-pane ref="scrollPane" class="tags-view-wrapper" @scroll="handleScroll">
       <template v-for="tag in visitedViews" :key="tag.path">
-
         <router-link
           ref="tag"
           :class="isActive(tag)?'active':''"
@@ -213,11 +212,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "@/styles/variables.module.scss";
 .tags-view-container {
   height: 40px;
   width: 100%;
   background: #fff;
   box-shadow: 0px -1px 0px 0px #EBEDF1;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+
   .tags-view-wrapper {
     .tags-view-item {
       position: relative;
@@ -227,14 +230,15 @@ export default {
       cursor: pointer;
       height: 37px;
       line-height: 48px;
-      color: #495060;
+      color: #ADAFB3;
       background: #fff;
       
       font-size: 12px;
       text-decoration:none;
       &.active {
-        border-bottom: 3px solid #00C78E;
-        color: #00C78E;
+        font-weight: 600;
+        border-bottom: 3px solid $hightline;
+        color: $menuActiveText;
       }
     }
     .el-divider--vertical {

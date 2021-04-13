@@ -9,7 +9,7 @@
       <el-header
         class="app-header"
         :class="{'fixed-header':fixedHeader}"
-        :height="needTagsView ? '90px' : '50px'"  
+        :height="needTagsView ? '110px' : '70px'"  
       >
         <navbar />
         <tags-view v-if="needTagsView" />
@@ -91,8 +91,7 @@ export default {
   z-index: 999;
 }
 .app-header {
-  padding: 0;
-  box-shadow: 0 1px 4px rgba(0,21,41,.08);
+  padding: 20px 20px 0 20px;
   overflow: hidden;
 }
 .fixed-header {

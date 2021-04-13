@@ -87,7 +87,7 @@
     .el-menu-item.is-active {
       font-weight: 600;
       background-color: $subMenuHover !important;
-      border-left: 5px solid #85D8FC;
+      border-left: 5px solid $hightline;
     }
 
     .is-active>.el-submenu__title {
@@ -96,6 +96,7 @@
 
     & .nest-menu .el-submenu>.el-submenu__title,
     & .el-submenu .el-menu-item {
+      padding-left: 40px!important;
       min-width: $sideBarWidth !important;
       background-color: $subMenuBg !important;
 
