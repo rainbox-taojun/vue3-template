@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import { computed, onMounted } from 'vue'
+import { computed } from 'vue'
 import { useStore } from 'vuex'
 import { useRoute } from 'vue-router'
 import Logo from './Logo.vue'
@@ -61,12 +61,6 @@ export default {
     const permission_routes = computed(() => {
       return store.getters.permission_routes
     })
-
-    onMounted(() => {
-      console.log(permission_routes)
-    })
-
-    console.log(variables)
 
     return {
       variables,

@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import { watch, onBeforeMount, ref, computed } from 'vue'
+import { watch, onBeforeMount, ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { compile } from 'path-to-regexp'
 
@@ -71,7 +71,6 @@ export default {
 
     onBeforeMount(() => {
       getBreadcrumb()
-      console.log(levelList.value)
     })
 
     watch(route, () => {

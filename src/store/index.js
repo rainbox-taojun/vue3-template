@@ -5,6 +5,7 @@ import app from './modules/app'
 import user from './modules/user'
 import permission from './modules/permission'
 import settings from './modules/settings'
+import tagsView from './modules/tagsView'
 import getters from './getters'
 
 export default createStore({
@@ -12,7 +13,8 @@ export default createStore({
     app,
     user,
     permission,
-    settings
+    settings,
+    tagsView
   },
   getters
 })

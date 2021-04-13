@@ -1,5 +1,5 @@
 <template>
-  <el-header height="50px" class="navbar">
+  <div class="navbar">
     <hamburger id="hamburger-container" :is-active="sidebar.opened" class="hamburger-container" @toggleClick="toggleSideBar" />
 
     <breadcrumb id="breadcrumb-container" class="breadcrumb-container" />
@@ -42,7 +42,7 @@
         </el-dropdown-menu>
       </el-dropdown>
     </div> -->
-  </el-header>
+  </div>
 </template>
 
 <script>
@@ -78,12 +78,10 @@ export default {
 
 <style lang="scss" scoped>
 .navbar {
-  padding: 0;
   height: 50px;
   overflow: hidden;
   position: relative;
   background: #fff;
-  box-shadow: 0 1px 4px rgba(0,21,41,.08);
 
   .hamburger-container {
     line-height: 46px;
