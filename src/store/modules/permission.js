@@ -19,7 +19,7 @@ function dynamicImport(dynamicViewsModules, component) {
   }
   if (matchKeys?.length > 1) {
     warn(
-      'Please do not create `.vue` and `.TSX` files with the same file name in the same hierarchical directory under the views folder. This will cause dynamic introduction failure'
+      '请不要在视图文件夹下的同一分层目录中使用相同的文件名创建“.vue`和`.tsx`文件。这将导致动态引入失败'
     );
     return
   }
@@ -32,6 +32,7 @@ export function mountRouter(asyncRouterMap) {
       if (route.component === 'Layout') {
         route.component = Layout
       } else {
+        // 关于import.meta.glob 可见：https://vitejs.dev/guide/features.html#json
         dynamicViewsModules = dynamicViewsModules || import.meta.glob('../../views/**/*.{vue, jsx}')
         route.component = dynamicImport(dynamicViewsModules, route.component)
       }

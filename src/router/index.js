@@ -1,6 +1,5 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import Layout from '../layout/index.vue'
-import Page404 from '../views/error-page/404.vue'
 
 export const constantRoutes = [
   {
@@ -24,8 +23,21 @@ export const constantRoutes = [
     hidden: true
   },
 
-  { path: '/:pathMatch(.*)*', name: 'not-found', component: Page404 },
+  {
+    path: '/404',
+    component: () => import('@/views/error-page/404.vue'),
+    hidden: true
+  },
+
+  {
+    path: '/401',
+    component: () => import('@/views/error-page/401.vue'),
+    hidden: true
+  },
+
+  { path: '/:catchAll(.*)', redirect: '/404', hidden: true }
 ]
+
 
 const router = createRouter({
   history: createWebHashHistory(),
