@@ -96,8 +96,8 @@
 
     .is-active>.svg-icon,
     .is-active>i,
-    .is-active>.el-submenu__title .svg-icon,
-    .is-active>.el-submenu__title i {
+    .is-active>.el-submenu__title>.svg-icon,
+    .is-active>.el-submenu__title>i {
       color: #72A1FF;
     }
 
