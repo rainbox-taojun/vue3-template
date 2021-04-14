@@ -2,6 +2,8 @@ import { getModules } from '@/api/system'
 import { constantRoutes } from '@/router'
 import Layout from '@/layout/index.vue'
 
+let dynamicViewsModules = null // 所有views下的组件
+
 // 动态载入
 function dynamicImport(dynamicViewsModules, component) {
   const keys = Object.keys(dynamicViewsModules)
@@ -30,7 +32,7 @@ export function mountRouter(asyncRouterMap) {
       if (route.component === 'Layout') {
         route.component = Layout
       } else {
-        const dynamicViewsModules = import.meta.glob('../../views/**/*.{vue, jsx}')
+        dynamicViewsModules = dynamicViewsModules || import.meta.glob('../../views/**/*.{vue, jsx}')
         route.component = dynamicImport(dynamicViewsModules, route.component)
       }
     }
