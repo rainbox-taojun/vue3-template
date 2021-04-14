@@ -1,7 +1,27 @@
-import { defineAsyncComponent } from 'vue'
 import { getModules } from '@/api/system'
 import { constantRoutes } from '@/router'
 import Layout from '@/layout/index.vue'
+
+// 动态载入
+function dynamicImport(dynamicViewsModules, component) {
+  const keys = Object.keys(dynamicViewsModules)
+  const matchKeys = keys.filter((key) => {
+    let k = key.replace('../../views/', '')
+    const lastIndex = k.lastIndexOf('.')
+    k = k.substring(0, lastIndex)
+    return k === component
+  })
+  if (matchKeys?.length === 1) {
+    const matchKey = matchKeys[0]
+    return dynamicViewsModules[matchKey]
+  }
+  if (matchKeys?.length > 1) {
+    warn(
+      'Please do not create `.vue` and `.TSX` files with the same file name in the same hierarchical directory under the views folder. This will cause dynamic introduction failure'
+    );
+    return
+  }
+}
 
 // 挂在路由上的组件
 export function mountRouter(asyncRouterMap) {
@@ -10,14 +30,8 @@ export function mountRouter(asyncRouterMap) {
       if (route.component === 'Layout') {
         route.component = Layout
       } else {
-        if (import.meta.env.MODE === 'production') {
-          
-          const modules = import.meta.glob('../../views/' + route.component + '.vue')
-          console.log(modules)
-          route.component = modules
-        } else {
-          route.component = import('../../views/' + route.component + '.vue')
-        }
+        const dynamicViewsModules = import.meta.glob('../../views/**/*.{vue, jsx}')
+        route.component = dynamicImport(dynamicViewsModules, route.component)
       }
     }
     if (route.children && route.children.length) {
