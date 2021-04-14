@@ -215,7 +215,7 @@ export default {
 <style lang="scss" scoped>
 @import "@/styles/variables.module.scss";
 .tags-view-container {
-  height: 40px;
+  height: 38px;
   width: 100%;
   background: #fff;
   box-shadow: 0px -1px 0px 0px #EBEDF1;

@@ -1,3 +1,4 @@
+import { defineAsyncComponent } from 'vue'
 import { getModules } from '@/api/system'
 import { constantRoutes } from '@/router'
 import Layout from '@/layout/index.vue'
@@ -9,7 +10,14 @@ export function mountRouter(asyncRouterMap) {
       if (route.component === 'Layout') {
         route.component = Layout
       } else {
-        route.component = import('../../views/' + route.component + '.vue')
+        if (import.meta.env.MODE === 'production') {
+          
+          const modules = import.meta.glob('../../views/' + route.component + '.vue')
+          console.log(modules)
+          route.component = modules
+        } else {
+          route.component = import('../../views/' + route.component + '.vue')
+        }
       }
     }
     if (route.children && route.children.length) {

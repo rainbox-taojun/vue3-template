@@ -1,5 +1,6 @@
 import { createStore } from 'vuex'
 
+// 会报错先手动引入
 // const modules = import.meta.globEager('./modules/*.js')
 import app from './modules/app'
 import user from './modules/user'

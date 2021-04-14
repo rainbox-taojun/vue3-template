@@ -122,8 +122,16 @@
       margin-left: 54px;
     }
 
+    .el-menu-item>span {
+      height: 0;
+      width: 0;
+      overflow: hidden;
+      visibility: hidden;
+      display: inline-block;
+    }
+
     .submenu-title-noDropdown {
-      padding: 0 !important;
+      // padding: 0 !important;
       position: relative;
 
       .el-tooltip {
