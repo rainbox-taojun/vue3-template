@@ -2,7 +2,7 @@ import request from '@/utils/request'
 
 export function getModules(query) {
   return request({
-    url: '/vue-element-admin/system/getModules',
+    url: '/api/system/getModules',
     method: 'post',
     data: query
   })
@@ -11,7 +11,7 @@ export function getModules(query) {
 // 用户列表
 export function getUserList(query) {
   return request({
-    url: '/vue-element-admin/users/get_list',
+    url: '/api/users/get_list',
     method: 'post',
     data: query
   })
@@ -20,7 +20,7 @@ export function getUserList(query) {
 // 用户信息
 export function getUserInfo(id) {
   return request({
-    url: `/vue-element-admin/users/get_info/${id}`,
+    url: `/api/users/get_info/${id}`,
     method: 'post'
   })
 }
@@ -28,7 +28,7 @@ export function getUserInfo(id) {
 // 新增用户
 export function addUser(query) {
   return request({
-    url: '/vue-element-admin/users/new_info',
+    url: '/api/users/new_info',
     method: 'post',
     data: query
   })
@@ -37,7 +37,7 @@ export function addUser(query) {
 // 修改用户
 export function editUser(query) {
   return request({
-    url: '/vue-element-admin/users/new_info',
+    url: '/api/users/new_info',
     method: 'post',
     data: query
   })
@@ -46,7 +46,7 @@ export function editUser(query) {
 // 角色列表
 export function getRoleList() {
   return request({
-    url: '/vue-element-admin/roles/get_list',
+    url: '/api/roles/get_list',
     method: 'post'
   })
 }
@@ -54,7 +54,7 @@ export function getRoleList() {
 // 角色信息详情
 export function getRoleInfo() {
   return request({
-    url: '/vue-element-admin/roles/get_info',
+    url: '/api/roles/get_info',
     method: 'post'
   })
 }
@@ -62,7 +62,7 @@ export function getRoleInfo() {
 // 新增角色
 export function addRole() {
   return request({
-    url: '/vue-element-admin/roles/new_info',
+    url: '/api/roles/new_info',
     method: 'post'
   })
 }
@@ -70,7 +70,7 @@ export function addRole() {
 // 新增角色
 export function editRole() {
   return request({
-    url: '/vue-element-admin/roles/edit_info',
+    url: '/api/roles/edit_info',
     method: 'post'
   })
 }

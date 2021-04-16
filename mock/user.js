@@ -26,22 +26,22 @@ const users = {
 export default [
   // user login
   {
-    url: '/vue-element-admin/user/login',
-    type: 'post',
-    response: config => {
-      const { username } = config.body
+    url: '/api/user/login',
+    method: 'post',
+    response: ({body}) => {
+      const { username } = body
       const token = tokens[username]
 
       // mock error
       if (!token) {
         return {
-          status: 60204,
+          code: 60204,
           message: 'Account and password are incorrect.'
         }
       }
 
       return {
-        status: 200,
+        code: 200,
         data: token
       }
     }
@@ -49,22 +49,22 @@ export default [
 
   // get user info
   {
-    url: '/vue-element-admin/user/info\.*',
-    type: 'get',
-    response: config => {
-      const { token } = config.query
+    url: '/api/user/info',
+    method: 'get',
+    response: ({ query }) => {
+      const { token } = query
       const info = users[token]
 
       // mock error
       if (!info) {
         return {
-          status: 50008,
+          code: 50008,
           message: 'Login failed, unable to get user details.'
         }
       }
 
       return {
-        status: 200,
+        code: 200,
         data: info
       }
     }
@@ -72,11 +72,11 @@ export default [
 
   // user logout
   {
-    url: '/vue-element-admin/user/logout',
-    type: 'post',
-    response: _ => {
+    url: '/api/user/logout',
+    method: 'post',
+    response: ({body}) => {
       return {
-        status: 200,
+        code: 200,
         data: 'success'
       }
     }
