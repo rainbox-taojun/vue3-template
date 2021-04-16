@@ -9,15 +9,13 @@
       <el-header
         class="app-header"
         :class="{'fixed-header':fixedHeader}"
-        :height="needTagsView ? '110px' : '70px'"  
+        :height="needTagsView ? '88px' : '50px'"
       >
         <navbar />
         <tags-view v-if="needTagsView" />
       </el-header>
       
-      <el-main>
-        <app-main />
-      </el-main>
+      <app-main />
     </el-container>
   </el-container>
 </template>
@@ -91,20 +89,30 @@ export default {
   z-index: 999;
 }
 .app-header {
-  padding: 20px 20px 0 20px;
+  margin: 20px 20px 0 20px;
+  padding: 0;
   overflow: hidden;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  transition: box-shadow .3s;
+  
+  &:hover {
+    box-shadow: 0 2px 12px 0 rgb(0 0 0 / 10%);
+  }
 }
 .fixed-header {
   position: fixed;
   top: 0;
   right: 0;
   z-index: 9;
-  width: calc(100% - #{$sideBarWidth});
+  width: calc(100% - #{$sideBarWidth} - 40px);
   transition: width 0.28s;
 }
 
 .hideSidebar .fixed-header {
-  width: calc(100% - 54px)
+  width: calc(100% - 54px - 40px)
 }
 
 .mobile .fixed-header {

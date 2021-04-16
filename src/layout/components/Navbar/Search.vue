@@ -167,7 +167,6 @@ export default {
     .header-search-select {
       width: 210px;
       margin-left: 10px;
-      margin-top: 10px;
     }
   }
 }

@@ -90,8 +90,6 @@ export default {
   overflow: hidden;
   position: relative;
   background: #fff;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
 
   .hamburger-container {
     line-height: 46px;
@@ -143,7 +141,7 @@ export default {
       margin-right: 30px;
 
       .avatar-wrapper {
-        margin-top: 10px;
+        margin-top: 5px;
         position: relative;
         display: flex;
         align-items: center;

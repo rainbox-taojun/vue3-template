@@ -219,8 +219,7 @@ export default {
   width: 100%;
   background: #fff;
   box-shadow: 0px -1px 0px 0px #EBEDF1;
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
+  
 
   .tags-view-wrapper {
     .tags-view-item {
@@ -233,13 +232,17 @@ export default {
       line-height: 48px;
       color: #ADAFB3;
       background: #fff;
-      
       font-size: 12px;
       text-decoration:none;
+      transition: background .3s;
+      
       &.active {
         font-weight: 600;
         border-bottom: 3px solid $hightline;
         color: $menuActiveText;
+      }
+      &:hover {
+        background: rgba(0, 0, 0, .025);
       }
     }
     .el-divider--vertical {
