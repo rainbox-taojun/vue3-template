@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import { watch, onBeforeMount, ref } from 'vue'
+import { computed, watch, onBeforeMount, ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { compile } from 'path-to-regexp'
 
@@ -73,8 +73,12 @@ export default {
       getBreadcrumb()
     })
 
-    watch(route, () => {
-      if (route.path.startsWith('/redirect/')) {
+    const routePath = computed(() => {
+      return route.path
+    })
+
+    watch(routePath, () => {
+      if (routePath.toString().startsWith('/redirect/')) {
         return
       }
       getBreadcrumb()
