@@ -1,5 +1,5 @@
 export default {
-  title: 'Vue Element Admin',
+  title: 'Vue3 Template',
 
   /**
    * @type {boolean} true | false
