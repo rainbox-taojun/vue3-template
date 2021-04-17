@@ -5,15 +5,17 @@ vue3-template是vue3的项目模板，使用了vue3、vite2开发。目标是做
 - 使用vue3+vite2开发
 - 内置Mock数据方案(vite-plugin-mock)
 - 动态路由
-- 中、后台方案(master)
+- 布局切换(master)
+- 中、后台方案(admin)
 - 前台方案(portal)
 
 ## TODO
 + [X] 中、后台方案
-+ [ ] 前台方案
++ [X] 前台方案
 + [X] Mock
 + [X] 动态路由
 + [ ] 主题切换
++ [ ] 布局切换
 
 ## Build Setup
 node version: >=12.0.0
