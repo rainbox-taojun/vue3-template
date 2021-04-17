@@ -1,6 +1,5 @@
 <template>
   <el-container :class="classObj">
-    <sidebar class="sidebar-container"/>
     
     <el-container
       :class="{hasTagsView:needTagsView}"
@@ -23,14 +22,13 @@
 <script>
 import { computed } from 'vue'
 import { useStore } from 'vuex'
-import { Navbar, Sidebar, AppMain, TagsView } from './components'
+import { Navbar, AppMain, TagsView } from './components'
 
 export default {
   name: 'Layout',
   components: {
     Navbar,
     AppMain,
-    Sidebar,
     TagsView
   },
   setup() {
@@ -38,9 +36,6 @@ export default {
 
     const classObj = computed(() => {
       return {
-        hideSidebar: !store.getters.sidebar.opened,
-        openSidebar: store.getters.sidebar.opened,
-        withoutAnimation: store.getters.sidebar.withoutAnimation,
         mobile: store.getters.device === 'mobile'
       }
     })
@@ -72,11 +67,6 @@ export default {
   position: relative;
   height: 100%;
   width: 100%;
-
-  &.mobile.openSidebar {
-    position: fixed;
-    top: 0;
-  }
 }
 
 .drawer-bg {
@@ -107,7 +97,7 @@ export default {
   top: 0;
   right: 0;
   z-index: 9;
-  width: calc(100% - #{$sideBarWidth} - 40px);
+  width: calc(100% - 40px);
   transition: width 0.28s;
 }
 

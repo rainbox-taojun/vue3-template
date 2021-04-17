@@ -1,6 +1,5 @@
 <template>
   <div class="navbar">
-    <hamburger id="hamburger-container" :is-active="sidebar.opened" class="hamburger-container" @toggleClick="toggleSideBar" />
 
     <breadcrumb id="breadcrumb-container" class="breadcrumb-container" />
 
@@ -35,26 +34,16 @@
 import { computed } from 'vue'
 import { useStore } from 'vuex'
 import Breadcrumb from './Breadcrumb.vue'
-import Hamburger from './Hamburger.vue'
 import Search from './Search.vue'
 
 export default {
   name: 'Navbar',
   components: {
     Breadcrumb,
-    Hamburger,
     Search
   },
   setup() {
     const store = useStore()
-
-    const sidebar = computed(() => {
-      return store.getters.sidebar
-    })
-
-    const toggleSideBar = () => {
-      store.dispatch('app/toggleSideBar')
-    }
 
     const avatar = computed(() => {
       return store.getters.avatar
@@ -73,8 +62,6 @@ export default {
     }
 
     return {
-      sidebar,
-      toggleSideBar,
       avatar,
       name,
       device,
