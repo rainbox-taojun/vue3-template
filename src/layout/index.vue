@@ -13,7 +13,6 @@
         <navbar />
         <tags-view v-if="needTagsView" />
       </el-header>
-      
       <app-main />
     </el-container>
   </el-container>
@@ -36,6 +35,7 @@ export default {
 
     const classObj = computed(() => {
       return {
+        showBreadcrumb: store.getters.breadcrumb,
         mobile: store.getters.device === 'mobile'
       }
     })
@@ -99,10 +99,6 @@ export default {
   z-index: 9;
   width: calc(100% - 40px);
   transition: width 0.28s;
-}
-
-.hideSidebar .fixed-header {
-  width: calc(100% - 54px - 40px)
 }
 
 .mobile .fixed-header {

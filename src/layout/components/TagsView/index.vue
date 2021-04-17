@@ -218,7 +218,6 @@ export default {
   width: 100%;
   background: #fff;
   box-shadow: 0px -1px 0px 0px #EBEDF1;
-  
 
   .tags-view-wrapper {
     .tags-view-item {

@@ -13,11 +13,11 @@ $menuText:#A2A5AB;
 $menuActiveText:#0F2552;
 $subMenuActiveText:#0F2552; // https://github.com/ElemeFE/element/issues/12951
 
-$menuBg:#F0F5FE;
-$menuHover:#E7F2FE;
+$menuBg:#fff;
+$menuHover: rgba(0, 0, 0, .025);
 
-$subMenuBg:#F0F5FE;
-$subMenuHover:#E7F2FE;
+$subMenuBg:#fff;
+$subMenuHover:rgba(0, 0, 0, .025);
 
 $hightline: #85D8FC;
 

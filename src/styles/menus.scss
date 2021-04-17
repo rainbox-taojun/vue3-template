@@ -1,0 +1,32 @@
+@import "@/styles/variables.module.scss";
+
+.menus {
+  .el-menu.el-menu--horizontal {
+    & > a {
+      float: left;
+    }
+    &>a>.el-menu-item,
+    &>.el-submenu .el-submenu__title {
+      height:50px; 
+      line-height: 50px;
+
+      &:hover {
+        color: $menuActiveText !important;
+        background-color: $menuHover !important;
+      }
+    }
+
+    &>a>.el-menu-item.is-active,
+    &>.el-submenu.is-active .el-submenu__title {
+      border-bottom: 2px solid $hightline;
+      border-bottom-color: $hightline !important;
+    }
+  }
+}
+
+.el-menu.el-menu--popup {
+  & .el-menu-item.nest-menu:hover {
+    color: $menuActiveText !important;
+    background-color: $subMenuHover !important;
+  }
+}

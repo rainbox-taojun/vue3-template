@@ -1,7 +1,8 @@
 <template>
   <div class="navbar">
+    <logo />
 
-    <breadcrumb id="breadcrumb-container" class="breadcrumb-container" />
+    <menus />
 
     <div class="right-menu">
       <template v-if="device!=='mobile'">
@@ -33,13 +34,15 @@
 <script>
 import { computed } from 'vue'
 import { useStore } from 'vuex'
-import Breadcrumb from './Breadcrumb.vue'
+import Logo from './Logo.vue'
+import Menus from '../Menus/index.vue'
 import Search from './Search.vue'
 
 export default {
   name: 'Navbar',
   components: {
-    Breadcrumb,
+    Logo,
+    Menus,
     Search
   },
   setup() {
@@ -73,6 +76,7 @@ export default {
 
 <style lang="scss" scoped>
 .navbar {
+  display: flex;
   height: 50px;
   overflow: hidden;
   position: relative;

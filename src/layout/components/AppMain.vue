@@ -1,12 +1,35 @@
 <template>
   <el-main class="app-main">
+    <breadcrumb
+      v-if="needBreadcrumb"
+      id="breadcrumb-container"
+      class="breadcrumb-container"
+    />
     <router-view/>
   </el-main>
 </template>
 
 <script>
+import { computed } from 'vue'
+import { useStore } from 'vuex'
+import Breadcrumb from './Breadcrumb.vue'
+
 export default {
-  name: 'AppMain'
+  name: 'AppMain',
+  components: {
+    Breadcrumb
+  },
+  setup() {
+    const store = useStore()
+
+    const needBreadcrumb = computed(() => {
+      return store.state.settings.breadcrumb
+    })
+
+    return {
+      needBreadcrumb
+    }
+  }
 }
 </script>
 
@@ -20,7 +43,7 @@ export default {
 }
 
 .fixed-header+.app-main {
-  padding-top: 50px;
+  padding-top: 70px;
 }
 
 .hasTagsView {
