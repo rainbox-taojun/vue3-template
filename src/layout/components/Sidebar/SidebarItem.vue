@@ -108,6 +108,9 @@ export default {
       if (props.basePath === '/') {
         return routePath
       }
+      if (routePath === '') {
+        return props.basePath
+      }
       if (routePath.indexOf('/') === -1) {
         return props.basePath + '/' + routePath
       }

@@ -35,7 +35,7 @@ export const constantRoutes = [
     hidden: true
   },
 
-  { path: '/:catchAll(.*)', redirect: '/404', hidden: true }
+  // { path: '/:catchAll(.*)', redirect: '/404', hidden: true }
 ]
 
 
@@ -47,8 +47,11 @@ const router = createRouter({
 
 // 批量新增路由
 export function addRoutes(routes) {
-  routes.forEach(item => {
-    router.addRoute(item)
+  return new Promise((resolve) => {
+    routes.forEach(item => {
+      router.addRoute(item)
+    })
+    resolve()
   })
 }
 

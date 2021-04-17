@@ -52,9 +52,9 @@ export default {
     }
   },
   watch: {
-    $route() {
+    $route(to) {
       this.addTags()
-      // this.moveToCurrentTag()
+      this.moveToCurrentTag()
     },
     visible(value) {
       if (value) {
@@ -126,7 +126,6 @@ export default {
     moveToCurrentTag() {
       const tags = this.$refs.tag
       this.$nextTick(() => {
-        console.log(tags)
         for (const tag of tags) {
           if (tag.to.path === this.$route.path) {
             this.$refs.scrollPane.moveToTarget(tag)
