@@ -3,7 +3,7 @@ const asyncRoutes = [
     path: '/system',
     component: 'Layout',
     redirect: '/system/user',
-    meta: { title: '系统管理', icon: 'el-icon-eleme', affix: false },
+    meta: { title: '系统管理', icon: 'el-icon-s-tools', affix: false, rightMenu: true },
     children: [
       {
         path: 'user',

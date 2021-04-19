@@ -1,5 +1,5 @@
 <template>
-  <template v-if="!item.hidden">
+  <template v-if="!item.hidden && !item.meta?.rightMenu">
     <template v-if="hasOneShowingChild(item.children,item) && (!onlyOneChild.children||onlyOneChild.noShowingChildren)&&!item.alwaysShow">
       <app-link
         v-if="onlyOneChild.meta"
@@ -43,7 +43,7 @@
 </template>
 
 <script>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import { isExternal } from '@/utils/validate'
 import FixiOSBug from './FixiOSBug'
 import Item from './Item.vue'
@@ -116,6 +116,7 @@ export default {
       }
       return props.basePath + routePath
     }
+
     return {
       onlyOneChild,
       subMenu,

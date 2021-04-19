@@ -9,6 +9,8 @@
         <search id="header-search" class="right-menu-item" />
       </template>
 
+      <icons />
+
       <el-dropdown class="avatar-container right-menu-item hover-effect" trigger="click">
         <div class="avatar-wrapper">
           <span>你好，{{name}}</span>
@@ -37,13 +39,15 @@ import { useStore } from 'vuex'
 import Logo from './Logo.vue'
 import Menus from '../Menus/index.vue'
 import Search from './Search.vue'
+import Icons from './Icons.vue'
 
 export default {
   name: 'Navbar',
   components: {
     Logo,
     Menus,
-    Search
+    Search,
+    Icons
   },
   setup() {
     const store = useStore()
