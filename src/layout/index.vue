@@ -1,6 +1,5 @@
 <template>
   <el-container :class="classObj">
-    
     <el-container
       :class="{hasTagsView:needTagsView}"
       class="main-container"
@@ -67,6 +66,12 @@ export default {
   position: relative;
   height: 100%;
   width: 100%;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .drawer-bg {

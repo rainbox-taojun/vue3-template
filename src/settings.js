@@ -26,6 +26,12 @@ export default {
   fixedHeader: true,
 
   /**
+   * @type {Number} number | none
+   * @description 内容显示区域最大宽度
+   */
+  mainWidth: 1200,
+
+  /**
    * @type {string | array} 'production' | ['production', 'development']
    * @description Need show err logs component.
    * The default is only used in the production env

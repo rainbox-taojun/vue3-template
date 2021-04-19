@@ -1,13 +1,14 @@
 // import variables from '@/styles/element-variables.scss'
 import defaultSettings from '@/settings'
 
-const { showSettings, tagsView, fixedHeader, breadcrumb } = defaultSettings
+const { showSettings, tagsView, fixedHeader, breadcrumb, mainWidth } = defaultSettings
 
 const state = {
   showSettings: showSettings,
   tagsView: tagsView,
   fixedHeader: fixedHeader,
-  breadcrumb: breadcrumb
+  breadcrumb: breadcrumb,
+  mainWidth: mainWidth
 }
 
 const mutations = {

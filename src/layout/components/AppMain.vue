@@ -1,5 +1,5 @@
 <template>
-  <el-main class="app-main">
+  <el-main class="app-main" :style="{maxWidth: appMainWidth}">
     <breadcrumb
       v-if="needBreadcrumb"
       id="breadcrumb-container"
@@ -22,12 +22,20 @@ export default {
   setup() {
     const store = useStore()
 
+    const appMainWidth = computed(() => {
+      if (typeof store.state.settings.mainWidth === 'number' && !isNaN(store.state.settings.mainWidth) ) {
+        return store.state.settings.mainWidth + 'px'
+      }
+      return 'unset'
+    })
+
     const needBreadcrumb = computed(() => {
       return store.state.settings.breadcrumb
     })
 
     return {
-      needBreadcrumb
+      needBreadcrumb,
+      appMainWidth
     }
   }
 }
