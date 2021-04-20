@@ -35,6 +35,7 @@
 
 <script>
 import { computed } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
 import { useStore } from 'vuex'
 import Logo from './Logo.vue'
 import Menus from '../Menus/index.vue'
@@ -50,7 +51,17 @@ export default {
     Icons
   },
   setup() {
+    const route = useRoute()
+    const router = useRouter()
     const store = useStore()
+
+    const sidebar = computed(() => {
+      return store.getters.sidebar
+    })
+
+    const toggleSideBar = () => {
+      store.dispatch('app/toggleSideBar')
+    }
 
     const avatar = computed(() => {
       return store.getters.avatar
@@ -64,8 +75,9 @@ export default {
       return store.getters.device
     })
 
-    const logout = () => {
-
+    const logout = async () => {
+      await store.dispatch('user/logout')
+      router.push(`/login?redirect=${route.fullPath}`)
     }
 
     return {
