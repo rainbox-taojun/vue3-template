@@ -38,12 +38,15 @@ export const constantRoutes = [
   // { path: '/:catchAll(.*)', redirect: '/404', hidden: true }
 ]
 
+const createRouterFactory = () => {
+  return createRouter({
+    history: createWebHashHistory(),
+    scrollBehavior: () => ({ y: 0 }),
+    routes: constantRoutes
+  })
+}
 
-const router = createRouter({
-  history: createWebHashHistory(),
-  scrollBehavior: () => ({ y: 0 }),
-  routes: constantRoutes
-})
+const router = createRouterFactory()
 
 // 批量新增路由
 export function addRoutes(routes) {
@@ -56,7 +59,7 @@ export function addRoutes(routes) {
 }
 
 export function resetRouter() {
-  const newRouter = createRouter()
+  const newRouter = createRouterFactory()
   router.matcher = newRouter.matcher // reset router
 }
 

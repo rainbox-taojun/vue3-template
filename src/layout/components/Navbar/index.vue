@@ -35,6 +35,7 @@
 
 <script>
 import { computed } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
 import { useStore } from 'vuex'
 import Breadcrumb from './Breadcrumb.vue'
 import Hamburger from './Hamburger.vue'
@@ -50,6 +51,8 @@ export default {
     Icons
   },
   setup() {
+    const route = useRoute()
+    const router = useRouter()
     const store = useStore()
 
     const sidebar = computed(() => {
@@ -72,8 +75,9 @@ export default {
       return store.getters.device
     })
 
-    const logout = () => {
-
+    const logout = async () => {
+      await store.dispatch('user/logout')
+      router.push(`/login?redirect=${route.fullPath}`)
     }
 
     return {
