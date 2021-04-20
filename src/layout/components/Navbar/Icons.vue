@@ -4,9 +4,23 @@
     :key="item.path"
     class="icon-menu"
   >
-    <el-dropdown>
+    <router-link
+      v-if="item.children?.length === 1"
+      :to="item.children[0]"
+    >
+      <svg-icon :icon-class="item.meta.icon"/>
+    </router-link>
+    <el-dropdown v-else-if="item.children?.length > 1">
       <span class="el-dropdown-link">
-        <i :class="item.meta.icon" class="el-icon--right"></i>
+        <svg-icon
+          v-if="!item.meta.icon.includes('el-icon')"
+          :icon-class="item.meta.icon"
+        />
+        <i
+          v-else
+          :class="item.meta.icon"
+          class="el-icon--right"
+        />
       </span>
       <template #dropdown>
         <el-dropdown-menu>

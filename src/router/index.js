@@ -11,7 +11,7 @@ export const constantRoutes = [
         path: '/home',
         name: 'Home',
         component: () => import(/* webpackChunkName: "home" */ '@/views/home/index.vue'),
-        meta: { title: '首页', icon: 'dashboard', affix: true }
+        meta: { title: '首页', icon: 'el-icon-s-home', affix: true }
       }
     ]
   },
@@ -21,6 +21,21 @@ export const constantRoutes = [
     name: 'Login',
     component: () => import(/* webpackChunkName: "login" */ '@/views/login/index.vue'),
     hidden: true
+  },
+
+  {
+    path: '/settings',
+    component: Layout,
+    redirect: '/settings/layout-theme',
+    meta: { title: '设置', icon: 'theme', affix: false, rightMenu: true },
+    children: [
+      {
+        path: 'layout-theme',
+        name: 'LayoutTheme',
+        component: () => import(/* webpackChunkName: "settings" */ '@/views/settings/layout-theme/index.vue'),
+        meta: { title: '布局与主题', icon: 'theme' }
+      }
+    ]
   },
 
   {
