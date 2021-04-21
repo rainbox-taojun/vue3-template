@@ -1,5 +1,5 @@
 # vue3-template
-vue3-template是vue3的项目模板，使用了vue3、vite2开发。目标是做一个开箱即用的前、中、后台前端方案。
+vue3-template是vue3的项目模板，使用了vue3、vite2、element-plus开发。目标是做一个开箱即用的前、中、后台前端方案。
 
 ## 特性
 - 使用vue3+vite2开发
@@ -47,4 +47,9 @@ yarn build
 yarn serve
 ```
 
-## 
+## mock
+项目已使用vite-plugin-mock方案，当请求的baseURL为 '/dev-api'或'/prod-api'时会代理到mock服务。  
+如果想调用真实接口，可修改.env.development和.env.production中的VITE_APP_BASE_API。
+
+## 动态路由
+详见：目录/mock/system->getModules接口。

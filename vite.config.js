@@ -8,6 +8,15 @@ import { svgBuilder } from './build/svg/svgBuilder.ts'
 export default ({ command }) => {
   let prodMock = true
   return {
+    server: {
+      proxy: {
+        '/dev-api': {
+          target: 'http://localhost:3000',
+          changeOrigin: true,
+          rewrite: (path) => path.replace(/^\/dev-api/, '')
+        }
+      }
+    },
     plugins: [
       vue(),
       vueJsx(),
