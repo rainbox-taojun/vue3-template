@@ -23,6 +23,19 @@ $hightline: #85D8FC;
 
 $sideBarWidth: 210px;
 
+// top-menu
+$topMenuText:#A2A5AB;
+$topMenuActiveText:#0F2552;
+$topSubMenuActiveText:#0F2552; // https://github.com/ElemeFE/element/issues/12951
+
+$topMenuBg:#fff;
+$topMenuHover:rgba(0, 0, 0, .025);
+
+$topSubMenuBg:#fff;
+$topSubMenuHover:rgba(0, 0, 0, .025);
+
+$topHightline: #85D8FC;
+
 // the :export directive is the magic sauce for webpack
 // https://www.bluematador.com/blog/how-to-share-variables-between-js-and-sass
 :export {
@@ -35,4 +48,12 @@ $sideBarWidth: 210px;
   subMenuHover: $subMenuHover;
   sideBarWidth: $sideBarWidth;
   hightline: $hightline;
+  topMenuText: $topMenuText;
+  topMenuActiveText: $topMenuActiveText;
+  topSubMenuActiveText: $topSubMenuActiveText;
+  topMenuBg: $topMenuBg;
+  topMenuHover: $topMenuHover;
+  topSubMenuBg: $topSubMenuBg;
+  topSubMenuHover: $topSubMenuHover;
+  topHightline: $topHightline;
 }

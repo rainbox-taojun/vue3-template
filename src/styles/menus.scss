@@ -1,0 +1,36 @@
+@import "@/styles/variables.module.scss";
+
+.menus {
+  .el-menu.el-menu--horizontal {
+    & > a {
+      float: left;
+    }
+    &>a>.el-menu-item,
+    &>.el-submenu .el-submenu__title {
+      height:50px; 
+      line-height: 50px;
+
+      .svg-icon {
+        margin-right: 5px;
+      }
+
+      &:hover {
+        color: $topMenuActiveText !important;
+        background-color: $topMenuHover !important;
+      }
+    }
+
+    &>a>.el-menu-item.is-active,
+    &>.el-submenu.is-active .el-submenu__title {
+      border-bottom: 2px solid $topHightline;
+      border-bottom-color: $topHightline !important;
+    }
+  }
+}
+
+.el-menu.el-menu--popup {
+  & a>.el-menu-item:hover {
+    color: $topMenuActiveText !important;
+    background-color: $topSubMenuHover !important;
+  }
+}

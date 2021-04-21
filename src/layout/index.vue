@@ -1,6 +1,6 @@
 <template>
-  <el-container :class="classObj">
-    <sidebar class="sidebar-container"/>
+  <el-container :class="[classObj, layout+'-layout']">
+    <sidebar v-if="layout==='sidebar'" class="sidebar-container"/>
     
     <el-container
       :class="{hasTagsView:needTagsView}"
@@ -38,12 +38,14 @@ export default {
 
     const classObj = computed(() => {
       return {
+        // layout: store.state.settings.layout,
         hideSidebar: !store.getters.sidebar.opened,
         openSidebar: store.getters.sidebar.opened,
         withoutAnimation: store.getters.sidebar.withoutAnimation,
         mobile: store.getters.device === 'mobile'
       }
     })
+    console.log(classObj)
 
     const needTagsView = computed(() => {
       return store.state.settings.tagsView
@@ -53,10 +55,15 @@ export default {
       return store.state.settings.fixedHeader
     })
 
+    const layout = computed(() => {
+      return store.state.settings.layout
+    })
+
     return {
       classObj,
       needTagsView,
-      fixedHeader
+      fixedHeader,
+      layout
     }
   }
 }
@@ -102,17 +109,29 @@ export default {
     box-shadow: 0 2px 12px 0 rgb(0 0 0 / 10%);
   }
 }
+
 .fixed-header {
   position: fixed;
   top: 0;
   right: 0;
   z-index: 9;
-  width: calc(100% - #{$sideBarWidth} - 40px);
   transition: width 0.28s;
 }
 
-.hideSidebar .fixed-header {
-  width: calc(100% - 54px - 40px)
+.sidebar-layout {
+  .fixed-header {
+    width: calc(100% - #{$sideBarWidth} - 40px);
+  }
+
+  .hideSidebar .fixed-header {
+    width: calc(100% - 54px - 40px)
+  }
+}
+
+.top-menu-layout {
+  .fixed-header {
+    left: 0;
+  }
 }
 
 .mobile .fixed-header {

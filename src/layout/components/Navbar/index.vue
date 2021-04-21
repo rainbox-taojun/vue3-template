@@ -1,8 +1,24 @@
 <template>
   <div class="navbar">
-    <hamburger id="hamburger-container" :is-active="sidebar.opened" class="hamburger-container" @toggleClick="toggleSideBar" />
+    <template v-if="layout==='sidebar'"> 
+      <hamburger
+        id="hamburger-container"
+        :is-active="sidebar.opened"
+        class="hamburger-container"
+        @toggleClick="toggleSideBar"
+      />
 
-    <breadcrumb id="breadcrumb-container" class="breadcrumb-container" />
+      <breadcrumb
+        id="breadcrumb-container"
+        class="breadcrumb-container"
+      />
+    </template>
+    
+    <template v-else-if="layout==='top-menu'">
+      <logo v-if="showLogo" />
+      <menus />
+    </template>
+    
 
     <div class="right-menu">
       <template v-if="device!=='mobile'">
@@ -41,6 +57,8 @@ import { useRoute, useRouter } from 'vue-router'
 import { useStore } from 'vuex'
 import Breadcrumb from './Breadcrumb.vue'
 import Hamburger from './Hamburger.vue'
+import Logo from './Logo.vue'
+import Menus from '../Menus/index.vue'
 import Search from './Search.vue'
 import Icons from './Icons.vue'
 import Theme from './Theme/index.vue'
@@ -52,7 +70,9 @@ export default {
     Hamburger,
     Search,
     Icons,
-    Theme
+    Theme,
+    Logo,
+    Menus
   },
   setup() {
     const route = useRoute()
@@ -79,6 +99,14 @@ export default {
       return store.getters.device
     })
 
+    const layout = computed(() => {
+      return store.state.settings.layout
+    })
+
+    const showLogo = computed(() => {
+      return store.state.settings.sidebarLogo
+    })
+
     const logout = async () => {
       await store.dispatch('user/logout')
       router.push(`/login?redirect=${route.fullPath}`)
@@ -90,13 +118,20 @@ export default {
       avatar,
       name,
       device,
-      logout
+      logout,
+      layout,
+      showLogo
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
+.top-menu-layout {
+  .navbar {
+    display: flex;
+  }
+}
 .navbar {
   height: 50px;
   overflow: hidden;
