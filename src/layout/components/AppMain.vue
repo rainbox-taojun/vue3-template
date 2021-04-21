@@ -20,7 +20,7 @@ export default {
 }
 
 .fixed-header+.app-main {
-  padding-top: 50px;
+  padding-top: 90px;
 }
 
 .hasTagsView {

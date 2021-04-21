@@ -82,6 +82,6 @@ export default {
 
 <style scoped lang="scss">
 .icon-menu {
-  margin-right: 10px;
+  margin-right: 20px;
 }
 </style>

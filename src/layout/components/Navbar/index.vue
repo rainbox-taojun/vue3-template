@@ -11,6 +11,8 @@
 
       <icons />
 
+      <theme />
+
       <el-dropdown class="avatar-container right-menu-item hover-effect" trigger="click">
         <div class="avatar-wrapper">
           <span>你好，{{name}}</span>
@@ -41,6 +43,7 @@ import Breadcrumb from './Breadcrumb.vue'
 import Hamburger from './Hamburger.vue'
 import Search from './Search.vue'
 import Icons from './Icons.vue'
+import Theme from './Theme/index.vue'
 
 export default {
   name: 'Navbar',
@@ -48,7 +51,8 @@ export default {
     Breadcrumb,
     Hamburger,
     Search,
-    Icons
+    Icons,
+    Theme
   },
   setup() {
     const route = useRoute()

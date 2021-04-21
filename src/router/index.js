@@ -24,21 +24,6 @@ export const constantRoutes = [
   },
 
   {
-    path: '/settings',
-    component: Layout,
-    redirect: '/settings/layout-theme',
-    meta: { title: '设置', icon: 'theme', affix: false, rightMenu: true },
-    children: [
-      {
-        path: 'layout-theme',
-        name: 'LayoutTheme',
-        component: () => import(/* webpackChunkName: "settings" */ '@/views/settings/layout-theme/index.vue'),
-        meta: { title: '布局与主题', icon: 'theme' }
-      }
-    ]
-  },
-
-  {
     path: '/404',
     component: () => import('@/views/error-page/404.vue'),
     hidden: true

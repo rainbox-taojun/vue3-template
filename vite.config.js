@@ -19,7 +19,7 @@ export default ({ command }) => {
         localEnabled: command === 'serve',
         prodEnabled: command !== 'serve' && prodMock,
         injectCode: `
-            import { setupProdMockServer } from './build/mock/mockProdServer';
+            import { setupProdMockServer } from '/build/mock/mockProdServer';
             setupProdMockServer();
           `,
       })
