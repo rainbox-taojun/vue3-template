@@ -42,7 +42,9 @@ export default {
         hideSidebar: !store.getters.sidebar.opened,
         openSidebar: store.getters.sidebar.opened,
         withoutAnimation: store.getters.sidebar.withoutAnimation,
-        mobile: store.getters.device === 'mobile'
+        mobile: store.getters.device === 'mobile',
+        light: store.state.settings.theme === 'light',
+        dark: store.state.settings.theme === 'dark'
       }
     })
 

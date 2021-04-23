@@ -2,9 +2,14 @@ export default {
   title: 'Vue3 Template',
 
   /**
-   * @type {boolean} 'sidebar' | 'topmenu'
+   * @type {boolean} 'sidebar' | 'top-menu'
    */
   layout: 'sidebar',
+
+  /**
+   * @type {boolean} 'light' | 'dark'
+   */
+  theme: 'light',
 
   /**
    * @type {boolean} true | false

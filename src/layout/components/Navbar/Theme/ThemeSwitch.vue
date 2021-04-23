@@ -4,23 +4,33 @@
   <el-switch
     style="display: block"
     v-model="value"
-    active-color="#13ce66"
-    inactive-color="#ff4949"
-    active-text="白天"
-    inactive-text="夜间">
-  </el-switch>
+    active-color="#303133"
+    inactive-color="#B3D8FF"
+    active-text="夜间"
+    inactive-text="白天"
+    active-value="dark"
+    inactive-value="light"
+    @change="(val) => toggleSetting('theme', val)"  
+  />
 </template>
 
 <script>
 import { ref } from 'vue'
+import { useStore } from 'vuex'
 
 export default {
   name: 'ThemeSwitch',
   setup() {
-    const value = ref(true)
+    const store = useStore()
+    const value = ref(store.state.settings.theme)
+
+    const toggleSetting = (key, value) => {
+      store.dispatch('settings/changeSetting', {key, value})
+    }
 
     return {
-      value
+      value,
+      toggleSetting
     }
   }
 }

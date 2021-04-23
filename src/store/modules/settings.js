@@ -1,14 +1,15 @@
 // import variables from '@/styles/element-variables.scss'
 import defaultSettings from '@/settings'
 
-const { showSettings, tagsView, fixedHeader, sidebarLogo, layout } = defaultSettings
+const { showSettings, tagsView, fixedHeader, sidebarLogo, layout, theme } = defaultSettings
 
 const state = {
   showSettings: showSettings,
   tagsView: tagsView,
   fixedHeader: fixedHeader,
   sidebarLogo: sidebarLogo,
-  layout: localStorage.getItem('layout') || layout
+  layout: localStorage.getItem('layout') || layout,
+  theme: localStorage.getItem('theme') || theme
 }
 
 const mutations = {
@@ -16,8 +17,8 @@ const mutations = {
     // eslint-disable-next-line no-prototype-builtins
     if (state.hasOwnProperty(key)) {
       state[key] = value
-      if (key === 'layout') {
-        localStorage.setItem('layout', state[key])
+      if (key === 'layout' || key === 'theme') {
+        localStorage.setItem(key, state[key])
       }
     }
   }
