@@ -8,7 +8,7 @@ const state = {
   tagsView: tagsView,
   fixedHeader: fixedHeader,
   sidebarLogo: sidebarLogo,
-  layout: layout
+  layout: localStorage.getItem('layout') || layout
 }
 
 const mutations = {
@@ -16,6 +16,9 @@ const mutations = {
     // eslint-disable-next-line no-prototype-builtins
     if (state.hasOwnProperty(key)) {
       state[key] = value
+      if (key === 'layout') {
+        localStorage.setItem('layout', state[key])
+      }
     }
   }
 }

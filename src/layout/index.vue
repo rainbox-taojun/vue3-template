@@ -3,16 +3,16 @@
     <sidebar v-if="layout==='sidebar'" class="sidebar-container"/>
     
     <el-container
-      :class="{hasTagsView:needTagsView}"
+      :class="{hasTagsView:(needTagsView && layout==='sidebar') }"
       class="main-container"
     >
       <el-header
         class="app-header"
         :class="{'fixed-header':fixedHeader}"
-        :height="needTagsView ? '88px' : '50px'"
+        :height="(needTagsView && layout==='sidebar') ? '88px' : '50px'"
       >
         <navbar />
-        <tags-view v-if="needTagsView" />
+        <tags-view v-if="needTagsView && layout==='sidebar'" />
       </el-header>
       
       <app-main />
@@ -45,7 +45,6 @@ export default {
         mobile: store.getters.device === 'mobile'
       }
     })
-    console.log(classObj)
 
     const needTagsView = computed(() => {
       return store.state.settings.tagsView
@@ -123,7 +122,7 @@ export default {
     width: calc(100% - #{$sideBarWidth} - 40px);
   }
 
-  .hideSidebar .fixed-header {
+  &.hideSidebar .fixed-header {
     width: calc(100% - 54px - 40px)
   }
 }
