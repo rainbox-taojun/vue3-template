@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import { computed } from 'vue'
+import { computed, onMounted } from 'vue'
 import { useStore } from 'vuex'
 import { Navbar, Sidebar, AppMain, TagsView } from './components'
 
@@ -38,14 +38,15 @@ export default {
 
     const classObj = computed(() => {
       return {
-        // layout: store.state.settings.layout,
         hideSidebar: !store.getters.sidebar.opened,
         openSidebar: store.getters.sidebar.opened,
         withoutAnimation: store.getters.sidebar.withoutAnimation,
-        mobile: store.getters.device === 'mobile',
-        light: store.state.settings.theme === 'light',
-        dark: store.state.settings.theme === 'dark'
+        mobile: store.getters.device === 'mobile'
       }
+    })
+
+    onMounted(() => {
+      document.body.dataset.theme = store.state.settings.theme
     })
 
     const needTagsView = computed(() => {

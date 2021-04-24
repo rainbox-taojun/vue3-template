@@ -9,6 +9,7 @@
         <svg-icon icon-class="layout"/>
       </div>
     </template>
+    <theme-switch />
     <layout-preview />
     <settings />
   </el-popover>
@@ -18,11 +19,13 @@
 import { computed } from 'vue'
 import { useStore } from 'vuex'
 import LayoutPreview from './LayoutPreview.vue'
+import ThemeSwitch from './ThemeSwitch.vue'
 import Settings from './Settings.vue'
 
 export default {
   name: 'Theme',
   components: {
+    ThemeSwitch,
     LayoutPreview,
     Settings
   },

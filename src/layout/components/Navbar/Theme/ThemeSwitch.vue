@@ -26,6 +26,7 @@ export default {
 
     const toggleSetting = (key, value) => {
       store.dispatch('settings/changeSetting', {key, value})
+      document.body.dataset.theme = value
     }
 
     return {
