@@ -2,10 +2,7 @@
   <div class="menus">
     <el-menu
       :default-active="activeMenu"
-      :background-color="variables.topMenuBg"
-      :text-color="variables.topMenuText"
       :unique-opened="false"
-      :active-text-color="variables.topMenuActiveText"
       :collapse-transition="false"
       mode="horizontal"
     >
@@ -24,7 +21,6 @@ import { computed } from 'vue'
 import { useStore } from 'vuex'
 import { useRoute } from 'vue-router'
 import MenusItem from './MenusItem.vue'
-import variables from '@/styles/variables.module.scss'
 
 export default {
   name: 'Menus',
@@ -49,7 +45,6 @@ export default {
     })
 
     return {
-      variables,
       permission_routes,
       activeMenu
     }

@@ -5,10 +5,7 @@
       <el-menu
         :default-active="activeMenu"
         :collapse="isCollapse"
-        :background-color="variables.menuBg"
-        :text-color="variables.menuText"
         :unique-opened="false"
-        :active-text-color="variables.menuActiveText"
         :collapse-transition="false"
         mode="vertical"
       >
@@ -29,7 +26,6 @@ import { useStore } from 'vuex'
 import { useRoute } from 'vue-router'
 import Logo from './Logo.vue'
 import SidebarItem from './SidebarItem.vue'
-import variables from '@/styles/variables.module.scss'
 
 export default {
   name: 'Sidebar',
@@ -63,7 +59,6 @@ export default {
     })
 
     return {
-      variables,
       isCollapse,
       showLogo,
       permission_routes,
