@@ -14,7 +14,6 @@ vue3-template是vue3的项目模板，使用了vue3、vite2、element-plus开发
 + [X] 前台方案
 + [X] Mock
 + [X] 动态路由
-+ [ ] 主题切换
 + [X] 布局切换
 
 ## 分支说明
