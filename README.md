@@ -15,6 +15,7 @@ vue3-template是vue3的项目模板，使用了vue3、vite2、element-plus开发
 + [X] Mock
 + [X] 动态路由
 + [X] 布局切换
++ [X] 主题切换
 
 ## 分支说明
 - master: 可以对页面整体的布局进行切换, 并且相较于admin、portal分支会多出组件和demo, 布局类型为其他分支的集合。
