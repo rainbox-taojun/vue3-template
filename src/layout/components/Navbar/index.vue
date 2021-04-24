@@ -127,6 +127,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '@/styles/mixin.scss';
+
 .top-menu-layout {
   .navbar {
     display: flex;
@@ -136,7 +138,10 @@ export default {
   height: 50px;
   overflow: hidden;
   position: relative;
-  background: #fff;
+  // background: #fff;
+  @include themeify () {
+    background: themed('topMenuBg');
+  }
 
   .hamburger-container {
     line-height: 46px;
@@ -147,7 +152,10 @@ export default {
     -webkit-tap-highlight-color:transparent;
 
     &:hover {
-      background: rgba(0, 0, 0, .025)
+      // background: rgba(0, 0, 0, .025);
+      @include themeify () {
+        background: themed('topMenuHover');
+      }
     }
   }
 
@@ -179,7 +187,10 @@ export default {
         transition: background .3s;
 
         &:hover {
-          background: rgba(0, 0, 0, .025)
+          // background: rgba(0, 0, 0, .025);
+          @include themeify () {
+            background: themed('topMenuHover');
+          }
         }
       }
     }

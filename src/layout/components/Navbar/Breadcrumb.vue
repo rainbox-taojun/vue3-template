@@ -93,14 +93,28 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '@/styles/mixin.scss';
 .app-breadcrumb.el-breadcrumb {
   display: inline-block;
   font-size: 14px;
   line-height: 50px;
   margin-left: 8px;
 
+  .el-breadcrumb__inner a, .el-breadcrumb__inner.is-link {
+    @include themeify () {
+      color: themed('breadcrumbLink') !important;
+
+      &:hover {
+        color: themed('breadcrumbHover') !important;
+      }
+    }
+  }
+
   .no-redirect {
     color: #97a8be;
+    @include themeify () {
+      color: themed('breadcrumbText');
+    }
     cursor: text;
   }
 }

@@ -2,11 +2,18 @@
 
 .menus {
   .el-menu.el-menu--horizontal {
+    @include themeify () {
+      background-color: themed('topMenuBg')!important;
+    }
     & > a {
       float: left;
     }
     &>a>.el-menu-item,
     &>.el-submenu .el-submenu__title {
+      @include themeify () {
+        color: themed('topMenuText')!important;
+        background-color: themed('topMenuBg')!important;
+      }
       height:50px; 
       line-height: 50px;
 
@@ -15,22 +22,62 @@
       }
 
       &:hover {
-        color: $topMenuActiveText !important;
-        background-color: $topMenuHover !important;
+        @include themeify () {
+          color: themed('topMenuActiveText') !important;
+          background-color: themed('topMenuHover') !important;
+        }
+        // color: $topMenuActiveText !important;
+        // background-color: $topMenuHover !important;
       }
     }
 
     &>a>.el-menu-item.is-active,
     &>.el-submenu.is-active .el-submenu__title {
-      border-bottom: 2px solid $topHightline;
-      border-bottom-color: $topHightline !important;
+      @include themeify () {
+        border-bottom: 2px solid themed('topHightline');
+        border-bottom-color: themed('topHightline') !important;
+      }
+      // border-bottom: 2px solid $topHightline;
+      // border-bottom-color: $topHightline !important;
     }
   }
 }
 
+.el-popper {
+  @include themeify () {
+    border: none !important;
+  }
+}
 .el-menu.el-menu--popup {
+  @include themeify () {
+    background-color: themed('menuBg') !important;
+  }
+
+  .el-menu-item {
+    @include themeify () {
+      background-color: themed('menuBg') !important;
+      border-left: 5px solid themed('menuBg')!important;
+    }
+
+    &.is-active {
+      @include themeify () {
+        color: themed('menuActiveText') !important;
+      }
+    }
+
+    &:hover {
+      @include themeify () {
+        border-left: 5px solid themed('menuBg')!important;
+      }
+    }
+  }
+
   & a>.el-menu-item:hover {
-    color: $topMenuActiveText !important;
-    background-color: $topSubMenuHover !important;
+    // color: $topMenuActiveText !important;
+    // background-color: $topSubMenuHover !important;
+    @include themeify () {
+      color: themed('topMenuActiveText') !important;
+      background-color: themed('topSubMenuHover') !important;
+    }
   }
 }

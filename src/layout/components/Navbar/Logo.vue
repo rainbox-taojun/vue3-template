@@ -23,12 +23,16 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '@/styles/mixin.scss';
 .logo-container {
   position: relative;
   margin-left: 10px;
   height: 50px;
   line-height: 50px;
-  background: #fff;
+  @include themeify () {
+    background: themed('topMenuBg');
+  }
+  
   text-align: center;
   overflow: hidden;
 
@@ -46,7 +50,10 @@ export default {
     & .title {
       display: inline-block;
       margin: 0;
-      color: #223A6B;
+      // color: #223A6B;
+      @include themeify () {
+        color: themed('logoText');
+      }
       font-weight: 600;
       line-height: 50px;
       font-size: 14px;

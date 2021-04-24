@@ -1,0 +1,75 @@
+$light: (
+  sidebarlogoBg: #F0F5FE,
+  topMenulogoBg: #fff,
+  logoText: #223A6B,
+  breadcrumbText: #97a8be,
+  breadcrumbLink: #303133,
+  breadcrumbHover: #409eff,
+
+  menuText:#A2A5AB,
+  menuActiveText:#0F2552,
+  subMenuActiveText:#0F2552, // https://github.com/ElemeFE/element/issues/12951
+
+  menuBg:#F0F5FE,
+  menuHover:#E7F2FE,
+  menuLeft: #F0F5FE,
+
+  subMenuBg:#F0F5FE,
+  subMenuHover:#E7F2FE,
+  subMenuLeft: #F0F5FE,
+
+  hightline: #85D8FC,
+
+  // top-menu
+  topMenuText:#A2A5AB,
+  topMenuActiveText:#0F2552,
+  topSubMenuActiveText:#0F2552, // https://github.com/ElemeFE/element/issues/12951
+
+  topMenuBg:#fff,
+  topMenuHover:rgba(0, 0, 0, .025),
+
+  topSubMenuBg:#fff,
+  topSubMenuHover:rgba(0, 0, 0, .025),
+
+  topHightline: #85D8FC,
+);
+$dark: (
+  sidebarlogoBg: #1f1f1f,
+  topMenulogoBg: #fff,
+  logoText: #fff,
+  breadcrumbText: rgba(255,255,255,.6),
+  breadcrumbLink: #fff,
+  breadcrumbHover: #409eff,
+  
+  menuText:#303133,
+  menuActiveText:#fff,
+  subMenuActiveText:#fff, // https://github.com/ElemeFE/element/issues/12951
+
+  menuBg:#1f1f1f,
+  menuHover:#1f1f1f,
+  menuLeft: #1f1f1f,
+
+  subMenuBg:#2d2d2d,
+  subMenuHover:#2d2d2d,
+  subMenuLeft: #2d2d2d,
+
+  hightline: #0960bd,
+
+  // top-menu
+  topMenuText:#ccc,
+  topMenuActiveText:#fff,
+  topSubMenuActiveText:#fff, // https://github.com/ElemeFE/element/issues/12951
+
+  topMenuBg:#1f1f1f,
+  topMenuHover:#1f1f1f,
+
+  topSubMenuBg:#1f1f1f,
+  topSubMenuHover:#1f1f1f,
+
+  topHightline: #0960bd,
+);
+
+$themes: (
+  light:$light,
+  dark:$dark,
+);

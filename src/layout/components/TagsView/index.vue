@@ -212,12 +212,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "@/styles/variables.module.scss";
+@import '@/styles/mixin.scss';
 .tags-view-container {
   height: 37px;
   width: 100%;
-  background: #fff;
   box-shadow: 0px -1px 0px 0px #EBEDF1;
+  @include themeify () {
+    background: themed('topMenuBg');
+  }
   
 
   .tags-view-wrapper {
@@ -229,16 +231,24 @@ export default {
       cursor: pointer;
       height: 37px;
       line-height: 48px;
-      color: #ADAFB3;
-      background: #fff;
+      @include themeify () {
+        color: themed('topMenuText');
+        background: themed('topMenuBg');
+      }
+      // color: #ADAFB3;
+      // background: #fff;
       font-size: 12px;
       text-decoration:none;
       transition: background .3s;
       
       &.active {
         font-weight: 600;
-        border-bottom: 3px solid $hightline;
-        color: $menuActiveText;
+        // border-bottom: 3px solid $hightline;
+        // color: $menuActiveText;
+        @include themeify () {
+          color: themed('menuActiveText');
+          border-bottom: 3px solid themed('hightline');
+        }
       }
       &:hover {
         background: rgba(0, 0, 0, .025);
@@ -275,6 +285,7 @@ export default {
 </style>
 
 <style lang="scss">
+@import '@/styles/mixin.scss';
 //reset element css of el-icon-close
 .tags-view-wrapper {
   .tags-view-item {
@@ -286,6 +297,9 @@ export default {
       font-size: 14px;
       text-align: center;
       color: rgba(0,0,0,.4);
+      @include themeify () {
+        color: themed('topMenuText');
+      }
 
       &:before {
         display: inline-block;
@@ -294,6 +308,9 @@ export default {
       &:hover {
         // background-color: #b4bccc;
         color: #000;
+        @include themeify () {
+          color: themed('topMenuActiveText');
+        }
       }
     }
   }

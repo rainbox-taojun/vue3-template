@@ -73,6 +73,7 @@ export default {
 
 <style lang="scss" scoped>
 @import "@/styles/variables.module.scss";
+
 .el-container {
   height: 100%;
 }

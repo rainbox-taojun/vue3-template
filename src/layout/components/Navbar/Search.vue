@@ -134,6 +134,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '@/styles/mixin.scss';
 .header-search {
   margin-right: 20px;
   font-size: 0 !important;
@@ -154,12 +155,15 @@ export default {
     display: inline-block;
     vertical-align: middle;
 
-    ::v-deep .el-input__inner {
+    :deep(.el-input__inner) {
       border-radius: 0;
       border: 0;
       box-shadow: none !important;
       border-radius: 20px!important;
-      background: #F1F5FE!important;
+      // background: #F1F5FE!important;
+      @include themeify () {
+        background: themed('subMenuBg')!important;
+      }
       vertical-align: middle;
     }
   }

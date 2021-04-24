@@ -12,7 +12,9 @@
     .sidebar-container {
       transition: width 0.28s;
       width: $sideBarWidth !important;
-      background-color: $menuBg;
+      @include themeify () {
+        background-color: themed('menuBg');
+      }
       height: 100%;
       position: fixed;
       font-size: 0px;
@@ -74,24 +76,43 @@
       // menu hover
       .submenu-title-noDropdown,
       .el-submenu__title {
+        padding-left: 15px !important;
+        @include themeify () {
+          background-color: themed('menuBg') !important;
+          border-left: 5px solid themed('menuLeft');
+        }
         &:hover {
-          background-color: $menuHover !important;
+          // background-color: $menuHover !important;
+          @include themeify () {
+            background-color: themed('menuHover') !important;
+          }
         }
       }
 
       .el-menu-item {
         padding-left: 15px !important;
-        border-left: 5px solid #fff;
+        // border-left: 5px solid #fff;
+        @include themeify () {
+          border-left: 5px solid themed('menuLeft') !important;
+        }
       }
 
       .el-menu-item.is-active {
         font-weight: 600;
-        background-color: $subMenuHover !important;
-        border-left: 5px solid $hightline;
+        @include themeify () {
+          color: themed('menuActiveText') !important;
+          background-color: themed('menuHover')  !important;
+          border-left: 5px solid themed('hightline')!important;
+        }
+        // background-color: $subMenuHover !important;
+        // border-left: 5px solid $hightline;
       }
 
       .is-active>.el-submenu__title {
-        color: $subMenuActiveText !important;
+        // color: $subMenuActiveText !important;
+        @include themeify () {
+          color: themed('subMenuActiveText') !important;
+        }
       }
 
       .is-active>.svg-icon,
@@ -105,10 +126,23 @@
       & .el-submenu .el-menu-item {
         padding-left: 40px!important;
         min-width: $sideBarWidth !important;
-        background-color: $subMenuBg !important;
+        // background-color: $subMenuBg !important;
+        @include themeify () {
+          background-color: themed('subMenuBg') !important;
+          border-left: 5px solid themed('subMenuLeft') !important;
+        }
+
+        &.is-active {
+          @include themeify () {
+            border-left: 5px solid themed('hightline') !important;
+          }
+        }
 
         &:hover {
-          background-color: $subMenuHover !important;
+          // background-color: $subMenuHover !important;
+          @include themeify () {
+            background-color: themed('subMenuHover') !important;
+          }
         }
       }
     }
@@ -122,12 +156,14 @@
         margin-left: 54px;
       }
 
-      .el-menu-item>span {
-        height: 0;
-        width: 0;
-        overflow: hidden;
-        visibility: hidden;
-        display: inline-block;
+      .el-menu-item {
+        &>span {
+          height: 0;
+          width: 0;
+          overflow: hidden;
+          visibility: hidden;
+          display: inline-block;
+        }
       }
 
       .submenu-title-noDropdown {
@@ -152,6 +188,7 @@
 
         &>.el-submenu__title {
           padding: 0 !important;
+          border-left: 0 !important;
 
           .svg-icon {
             margin-left: 20px;
@@ -233,7 +270,12 @@
   .el-menu-item {
     &:hover {
       // you can use $subMenuHover
-      background-color: $menuHover !important;
+      // background-color: $menuHover !important;
+      @include themeify () {
+        background-color: themed('menuHover') !important;
+        border-left: 5px solid themed('hightline')!important;
+      }
+      
     }
   }
 
@@ -241,6 +283,28 @@
   >.el-menu--popup {
     max-height: 100vh;
     overflow-y: auto;
+    @include themeify () {
+      background-color: themed('menuBg') !important;
+    }
+
+    .el-menu-item {
+      @include themeify () {
+        background-color: themed('menuBg') !important;
+        border-left: 5px solid themed('menuBg')!important;
+      }
+
+      &.is-active {
+        @include themeify () {
+          color: themed('menuActiveText') !important;
+        }
+      }
+
+      &:hover {
+        @include themeify () {
+          border-left: 5px solid themed('menuBg')!important;
+        }
+      }
+    }
 
     &::-webkit-scrollbar-track-piece {
       background: #d3dce6;
