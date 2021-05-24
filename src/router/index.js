@@ -1,5 +1,6 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import Layout from '../layout/index.vue'
+import NotFound from '@/views/error-page/404.vue'
 
 export const constantRoutes = [
   {
@@ -21,22 +22,16 @@ export const constantRoutes = [
     name: 'Login',
     component: () => import(/* webpackChunkName: "login" */ '@/views/login/index.vue'),
     hidden: true
-  },
-
-  {
-    path: '/404',
-    component: () => import('@/views/error-page/404.vue'),
-    hidden: true
-  },
-
-  {
-    path: '/401',
-    component: () => import('@/views/error-page/401.vue'),
-    hidden: true
-  },
-
-  // { path: '/:catchAll(.*)', redirect: '/404', hidden: true }
+  }
 ]
+
+// 404页面
+export const notFound = {
+  path: '/:pathMatch(.*)*',
+  name: 'not-found',
+  component: NotFound,
+  hidden: true
+}
 
 const createRouterFactory = () => {
   return createRouter({
@@ -58,9 +53,33 @@ export function addRoutes(routes) {
   })
 }
 
+// 判断路由是否存在
+const hasRoute = (route, list) => {
+  let flag = false
+  for(let i=0 ; i<list.length ; i++) {
+    const item = list[i]
+    if ((item.path === route.path) || (item.name === route.name)) {
+      flag = true
+      break
+    } else if (item.children) {
+      flag = hasRoute(route, item.children)
+      if (flag) { break }
+    } else {
+      flag = false
+    }
+  }
+
+  return flag
+}
+
+// 重置路由到最初的模样
 export function resetRouter() {
-  const newRouter = createRouterFactory()
-  router.matcher = newRouter.matcher // reset router
+  router.getRoutes().forEach((route) => {
+    if (!hasRoute(route, constantRoutes)) {
+      const { name } = route
+      router.hasRoute(name) && router.removeRoute(name)
+    }
+  })
 }
 
 export default router

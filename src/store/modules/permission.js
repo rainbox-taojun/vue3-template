@@ -1,5 +1,5 @@
 import { getModules } from '@/api/system'
-import { constantRoutes } from '@/router'
+import { constantRoutes, notFound } from '@/router'
 import Layout from '@/layout/index.vue'
 
 let dynamicViewsModules = null // 所有views下的组件
@@ -19,7 +19,7 @@ function dynamicImport(dynamicViewsModules, component) {
   }
   if (matchKeys?.length > 1) {
     warn(
-      '请不要在视图文件夹下的同一分层目录中使用相同的文件名创建“.vue`和`.tsx`文件。这将导致动态引入失败'
+      '请不要在视图文件夹下的同一分层目录中使用相同的文件名创建“.vue`、`.jsx`和`.tsx`文件。这将导致动态引入失败'
     );
     return
   }
@@ -33,7 +33,7 @@ export function mountRouter(asyncRouterMap) {
         route.component = Layout
       } else {
         // 关于import.meta.glob 可见：https://vitejs.dev/guide/features.html#json
-        dynamicViewsModules = dynamicViewsModules || import.meta.glob('../../views/**/*.{vue, jsx}')
+        dynamicViewsModules = dynamicViewsModules || import.meta.glob('../../views/**/*.{vue, jsx, tsx}')
         route.component = dynamicImport(dynamicViewsModules, route.component)
       }
     }
@@ -64,6 +64,8 @@ const actions = {
       getModules().then(res => {
         const { data } = res
         const accessedRoutes = mountRouter(data)
+        // 最后再加入404页面，否则在载入过程中路由可能已经认为页面不存在了
+        accessedRoutes.push(notFound)
         commit('SET_ROUTES', accessedRoutes)
         resolve(accessedRoutes)
       }).catch(e => {
