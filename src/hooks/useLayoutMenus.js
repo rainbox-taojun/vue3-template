@@ -1,9 +1,9 @@
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted, nextTick, watchEffect, onUnmounted } from 'vue'
 import { useStore } from 'vuex'
 import { useRoute } from 'vue-router'
 import { isExternal } from '@/utils/validate'
 
-export default function(props) {
+export default function(props, elRef) {
   const route = useRoute()
   const store = useStore()
 
@@ -18,6 +18,25 @@ export default function(props) {
 
   const permission_routes = computed(() => {
     return store.getters.permission_routes
+  })
+  const showNum = ref(0)
+  showNum.value = permission_routes.value.length
+  const menus = ref([])
+  const otherMenus = ref([])
+  watchEffect(() => {
+    menus.value = []
+    otherMenus.value = []
+    let i = 0
+    permission_routes.value.forEach(item => {
+      if (!item.hidden) {
+        if(i < showNum.value) {
+          menus.value.push(item)
+        } else {
+          otherMenus.value.push(item)
+        }
+        i++
+      }
+    })
   })
 
   const onlyOneChild = ref(null)
@@ -67,12 +86,34 @@ export default function(props) {
     return props.basePath + routePath
   }
 
+  // 判断菜单有没有超过容器范围，导致被隐藏了一部分
+  const checkMenuWidth = () => {
+    if (!elRef) { return }
+    nextTick(() => {
+      const boxWidth = elRef.value.offsetWidth
+      let num = Number.parseInt(boxWidth / 140)
+      showNum.value = num > 0 ? num : 0
+    })
+  }
+
+  onMounted(() => {
+    checkMenuWidth()
+    window.addEventListener('resize', checkMenuWidth)
+  })
+
+  onUnmounted(() => {
+    window.removeEventListener('resize', checkMenuWidth)
+  })
+
   return {
+    menus,
+    otherMenus,
     permission_routes,
     activeMenu,
     onlyOneChild,
     subMenu,
     resolvePath,
-    hasOneShowingChild
+    hasOneShowingChild,
+    checkMenuWidth
   }
 }

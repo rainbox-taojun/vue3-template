@@ -1,5 +1,5 @@
 <template>
-  <div class="menus">
+  <div class="menus" ref="menusRef">
     <el-menu
       :default-active="activeMenu"
       :unique-opened="false"
@@ -7,16 +7,27 @@
       mode="horizontal"
     >
       <menus-item
-        v-for="route in permission_routes"
+        v-for="route in menus"
         :key="route.path"
         :item="route"
         :base-path="route.path" 
       />
+      
+      <el-submenu v-if="otherMenus.length > 0">
+        <template #title>更多</template>
+        <menus-item
+          v-for="route in otherMenus"
+          :key="route.path"
+          :item="route"
+          :base-path="route.path"
+        />
+      </el-submenu>
     </el-menu>
   </div>
 </template>
 
 <script>
+import { ref, computed } from 'vue'
 import { useLayoutMenus } from '@/hooks'
 import MenusItem from './MenusItem.vue'
 
@@ -25,14 +36,19 @@ export default {
   components: {
     MenusItem
   },
-  setup() {
+  setup(props) {
+    const menusRef = ref(null)
+
     const {
       activeMenu,
-      permission_routes
-    } = useLayoutMenus()
+      menus,
+      otherMenus
+    } = useLayoutMenus(props, menusRef)
 
     return {
-      permission_routes,
+      menusRef,
+      menus,
+      otherMenus,
       activeMenu
     }
   }
