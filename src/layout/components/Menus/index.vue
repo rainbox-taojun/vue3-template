@@ -17,9 +17,7 @@
 </template>
 
 <script>
-import { computed } from 'vue'
-import { useStore } from 'vuex'
-import { useRoute } from 'vue-router'
+import { useLayoutMenus } from '@/hooks'
 import MenusItem from './MenusItem.vue'
 
 export default {
@@ -28,21 +26,10 @@ export default {
     MenusItem
   },
   setup() {
-    const route = useRoute()
-    const store = useStore()
-
-    const activeMenu = computed(() => {
-      const { meta, path } = route
-      // if set path, the sidebar will highlight the path you set
-      if (meta.activeMenu) {
-        return meta.activeMenu
-      }
-      return path
-    })
-
-    const permission_routes = computed(() => {
-      return store.getters.permission_routes
-    })
+    const {
+      activeMenu,
+      permission_routes
+    } = useLayoutMenus()
 
     return {
       permission_routes,

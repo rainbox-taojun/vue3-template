@@ -43,11 +43,10 @@
 </template>
 
 <script>
-import { ref } from 'vue'
-import { isExternal } from '@/utils/validate'
-import FixiOSBug from './FixiOSBug'
-import Item from './Item.vue'
-import AppLink from './Link.vue'
+import { useLayoutMenus } from '@/hooks'
+import { useFixiOSBug } from '@/hooks'
+import Item from '../Item.vue'
+import AppLink from '../Link.vue'
 
 export default {
   name: 'SidebarItem',
@@ -68,54 +67,15 @@ export default {
     }
   },
   setup(props) {
-    const onlyOneChild = ref(null)
-    const subMenu = ref(null)
+    const {
+      onlyOneChild,
+      subMenu,
+      hasOneShowingChild,
+      resolvePath
+    } = useLayoutMenus(props)
 
-    FixiOSBug(subMenu)
+    useFixiOSBug(subMenu)
 
-    const hasOneShowingChild = (children = [], parent) => {
-      const showingChildren = children.filter(item => {
-        if (item.hidden) {
-          return false
-        } else {
-          // Temp set(will be used if only has one showing child)
-          onlyOneChild.value = item
-          return true
-        }
-      })
-
-      // When there is only one child router, the child router is displayed by default
-      if (showingChildren.length === 1) {
-        return true
-      }
-
-      // Show parent if there are no child router to display
-      if (showingChildren.length === 0) {
-        onlyOneChild.value = { ... parent, path: '', noShowingChildren: true }
-        return true
-      }
-
-      return false
-    }
-
-    const resolvePath = (routePath) =>  {
-      if (isExternal(routePath)) {
-        return routePath
-      }
-      if (isExternal(props.basePath)) {
-        return props.basePath
-      }
-      if (props.basePath === '/') {
-        return routePath
-      }
-      if (routePath === '') {
-        return props.basePath
-      }
-      if (routePath.indexOf('/') === -1) {
-        return props.basePath + '/' + routePath
-      }
-      return props.basePath + routePath
-    }
     return {
       onlyOneChild,
       subMenu,

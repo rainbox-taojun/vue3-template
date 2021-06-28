@@ -23,7 +23,7 @@
 <script>
 import { computed } from 'vue'
 import { useStore } from 'vuex'
-import { useRoute } from 'vue-router'
+import { useLayoutMenus } from '@/hooks'
 import Logo from './Logo.vue'
 import SidebarItem from './SidebarItem.vue'
 
@@ -34,17 +34,12 @@ export default {
     SidebarItem
   },
   setup() {
-    const route = useRoute()
+    const {
+      activeMenu,
+      permission_routes
+    } = useLayoutMenus()
+    
     const store = useStore()
-
-    const activeMenu = computed(() => {
-      const { meta, path } = route
-      // if set path, the sidebar will highlight the path you set
-      if (meta.activeMenu) {
-        return meta.activeMenu
-      }
-      return path
-    })
 
     const showLogo = computed(() => {
       return store.state.settings.sidebarLogo
@@ -52,10 +47,6 @@ export default {
 
     const isCollapse = computed(() => {
       return !store.getters.sidebar.opened
-    })
-
-    const permission_routes = computed(() => {
-      return store.getters.permission_routes
     })
 
     return {
